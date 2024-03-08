@@ -1,0 +1,13 @@
+{% extends 'otree/Page.html' %}
+{% load otree static %}
+
+{% block title %}
+    Participant Information
+{% endblock %}
+
+{% block content %}
+    <p>Before we start with the main experiment, we ask you to complete a short three-question survey. In the course of the experiment, this information may be transmitted anonymously to another participant.</p>
+
+    {% formfields %}
+        {% next_button %}
+{% endblock %}

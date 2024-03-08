@@ -1,0 +1,13 @@
+{% extends 'otree/Page.html' %}
+{% load otree static %}
+
+{% block title %}
+    Set Your Price
+{% endblock %}
+
+{% block content %}
+    <p>You are in the role of a firm in a market with two other firms. Please set your selling price between 0 and 100.</p>
+
+    {% formfields %}
+        {% next_button %}
+{% endblock %}
