@@ -1,0 +1,20 @@
+{% extends 'otree/Page.html' %}
+{% load otree static %}
+
+{% block title %}
+    Market Results
+{% endblock %}
+
+{% block content %}
+    <p>The prices set by the firms in your market:</p>
+    <ul>
+        {% for player in group.get_players %}
+            <li>Firm {{ player.id_in_group }}: {{ player.price }}</li>
+        {% endfor %}
+    </ul>
+
+    <p>Your profit: {{ player.profit }}</p>
+    <p>Total consumer earnings: {{ total_consumer_earnings }}</p>
+
+    {% next_button %}
+{% endblock %}

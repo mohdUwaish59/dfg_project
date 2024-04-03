@@ -18,7 +18,7 @@ Your experiment description
 """
 
 class Constants(BaseConstants):
-    name_in_url = 'my_app'
+    name_in_url = 'T1_no_comm'
     players_per_group = 3
     num_rounds = 1
     num_consumers = 6

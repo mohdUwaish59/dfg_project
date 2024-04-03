@@ -2,8 +2,14 @@ from os import environ
 
 SESSION_CONFIGS = [
     {
-        'name': 'my_app',
-        'display_name': 'Your Experiment Name',
+        'name': 'T1_no_comm',
+        'display_name': 'T1_no_comm',
+        'num_demo_participants': 18,
+        'app_sequence': ['T1_no_comm'],
+    },
+    {
+        'name': 'T1_Chat',
+        'display_name': 'T1_Chat',
         'num_demo_participants': 18,
         'app_sequence': ['my_app'],
     },
