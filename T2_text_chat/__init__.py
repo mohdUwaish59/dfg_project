@@ -1,11 +1,11 @@
 from otree.api import *
 
 doc = """
-Market game experiment
+Market game experiment with a text chat
 """
 
 class Constants(BaseConstants):
-    name_in_url = 'T1_no_comm'
+    name_in_url = 'market_game'
     players_per_group = 3
     num_rounds = 20
     num_consumers = 6
@@ -49,9 +49,8 @@ class WaitForGrouping2(WaitPageBase):
     def is_displayed(player):
         return player.round_number != 1
 
-class PriceSetting(Page):
-    form_model = 'player'
-    form_fields = ['price']
+class Chat(Page):
+    timeout_seconds = 60
 
     def vars_for_template(self):
         other_firms = []
@@ -65,7 +64,7 @@ class PriceSetting(Page):
                 nicknames.append(player.nickname + ' (You)')
 
         if len(other_firms) == 1:
-            other_firms_text = other_firms[0]
+            other_firms_text = other_firms[0] 
         elif len(other_firms) == 2:
             other_firms_text = ' and '.join(other_firms)
         else:
@@ -76,10 +75,14 @@ class PriceSetting(Page):
             'nicknames': nicknames
         }
 
+class PriceSetting(Page):
+    form_model = 'player'
+    form_fields = ['price']
+
 class ResultsWaitPage(WaitPage):
     body_text = "Please wait until all other firms in your market have reached their decisions."
 
-    @staticmethod
+    @staticmethod 
     def after_all_players_arrive(group: Group):
         players = group.get_players()
         prices = [p.price for p in players]
@@ -101,11 +104,11 @@ class ResultsPage(Page):
     timeout_seconds = 10
     timer_text = 'Time until the next round begins:'
 
-    def vars_for_template(self):
-        lowest_price = min([p.price for p in self.group.get_players()])
+    def vars_for_template(player: Player):
+        lowest_price = min([p.price for p in player.group.get_players()])
         return {
-            'each_consumer_subtracted': cu(-lowest_price),
-            'group_consumers_subtracted': cu(-(lowest_price * Constants.num_consumers))
+            'each_consumer_subtracted': -lowest_price,
+            'group_consumers_subtracted': -(lowest_price * Constants.num_consumers)
         }
 
 class FinalPage(Page):
@@ -121,6 +124,7 @@ class FinalPage(Page):
 page_sequence = [
     WaitForGrouping1,
     WaitForGrouping2,
+    Chat,
     PriceSetting,
     ResultsWaitPage,
     ResultsPage,

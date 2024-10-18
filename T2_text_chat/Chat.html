@@ -1,13 +1,14 @@
 {% extends 'otree/Page.html' %}
 {% load otree static %}
 
-
 {% block title %}
-    Price-setting stage
+    Agree on a Price
 {% endblock %}
 
 {% block content %}
-    <p>You are in the role of <b>{{ player.nickname }}</b> and your task is to set a sales price for a product also sold by {{ other_firms }}.</p>
+    <p>
+        You represent <b>{{ player.nickname }}</b> and your task is to agree on a sales price for a common product with {{ other_firms }}.
+    </p>
 
     <div class="border p-4">
         <table class="table table-sm" style="table-layout: fixed">
@@ -50,6 +51,25 @@
 
     <br/>
 
-    {% formfields %}
-    {% next_button %}
+    {{ chat nickname=player.nickname }}
+
+    <!--
+    <style>
+        .otree-chat__messages { background: white }
+    </style>
+    -->
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var chat_input = document.getElementsByClassName('otree-chat__input')[0];
+            chat_input.setAttribute('placeholder', 'Type your messages here');
+
+            //var send_button = document.getElementsByClassName('otree-chat__btn-send')[0];
+            //send_button.setAttribute('class', 'btn btn-primary btn-sm');
+            //send_button.style.color = 'white';
+            //send_button.style.background = '#0d6efd';
+            //send_button.style.border = 'solid 2px #0d6efd';
+        });
+    </script>
+
 {% endblock %}

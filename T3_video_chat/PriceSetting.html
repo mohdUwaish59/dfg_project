@@ -1,0 +1,25 @@
+{% extends "otree/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Price-setting stage
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Set Your Price</h5>
+                        {% formfields %}
+                        <p class="mt-3">
+                            To confirm your choice, click the Next button.
+                        </p>
+                        {% next_button %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

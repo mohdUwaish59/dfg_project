@@ -3,15 +3,21 @@ from os import environ
 SESSION_CONFIGS = [
     {
         'name': 'T1_no_comm',
-        'display_name': 'T1_no_comm',
+        'display_name': 'No communication',
         'num_demo_participants': 18,
-        'app_sequence': ['T1_no_comm'],
+        'app_sequence': ['introduction', 'T1_no_comm', 'post_questionnaire'],
     },
     {
-        'name': 'T1_Chat',
-        'display_name': 'T1_Chat',
+        'name': 'T2_text_chat',
+        'display_name': 'Text chat',
         'num_demo_participants': 18,
-        'app_sequence': ['my_app'],
+        'app_sequence': ['introduction', 'T2_text_chat', 'post_questionnaire'],
+    },
+    {
+        'name': 'T3_video_chat',
+        'display_name': 'Video chat',
+        'num_demo_participants': 18,
+        'app_sequence': ['introduction', 'T3_video_chat', 'post_questionnaire'],
     },
 ]
 
@@ -21,10 +27,10 @@ SESSION_CONFIGS = [
 # e.g. self.session.config['participation_fee']
 
 SESSION_CONFIG_DEFAULTS = dict(
-    real_world_currency_per_point=1.00, participation_fee=0.00, doc=""
+    real_world_currency_per_point=0.0008333333333333333, participation_fee=2.00, doc=""
 )
 
-PARTICIPANT_FIELDS = []
+PARTICIPANT_FIELDS = ['gender', 'age', 'education']
 SESSION_FIELDS = []
 
 # ISO-639 code
@@ -32,7 +38,8 @@ SESSION_FIELDS = []
 LANGUAGE_CODE = 'en'
 
 # e.g. EUR, GBP, CNY, JPY
-REAL_WORLD_CURRENCY_CODE = 'USD'
+REAL_WORLD_CURRENCY_CODE = 'GBP'
+POINTS_CUSTOM_NAME = 'ECU'
 USE_POINTS = True
 
 ADMIN_USERNAME = 'admin'

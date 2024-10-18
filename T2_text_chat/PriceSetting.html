@@ -1,0 +1,16 @@
+{% extends 'otree/Page.html' %}
+{% load otree static %}
+
+{% block title %}
+    Price-setting stage
+{% endblock %}
+
+{% block content %}
+    {% formfields %}
+
+    <p>
+        To confirm your choice, click the Next button.
+    </p>
+
+    {% next_button %}
+{% endblock %}

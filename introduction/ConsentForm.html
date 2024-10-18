@@ -1,0 +1,78 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Consent Form
+{% endblock %}
+
+{% block styles %}
+    <style>
+        .content {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .consent-checkbox {
+            margin-top: 20px;
+        }
+        .consent-instruction {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 5px;
+            font-style: italic;
+        }
+        #nextButton {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #nextButton:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <p>Dear participant,</p>
+        <p>We kindly request your consent for the collection and processing of data gathered during this study.</p>
+        
+        <h3>Study Information and Consent to Participate</h3>
+        
+        
+        <p>In this study, you will participate in an experimental market simulation. As a participant, you will take on the role of a firm and make pricing decisions for a virtual good. Your earnings will be influenced by the pricing choices you and other participants make in this market environment.</p>
+        
+        <p>The decisions you make will directly affect your potential earnings in this experiment. Please note that your participation is entirely voluntary, and you may withdraw from the study at any time without providing a reason. However, should you terminate the survey prematurely, you will not face any negative consequences, but please be aware that payment will only be made for fully completed surveys.</p>
+        
+        <p>You can earn money depending on your decisions. The processing time is approximately 45 minutes. For participating in the experiment, you will receive a fixed payment of 1 pound and can earn additional money depending on your decisions and the decisions of another participant.</p>
+        
+        <p>This study is conducted as part of a research project by scientists from the University of Göttingen. If you have any questions about the study in general, please contact <b>Faeze Heydari</b> (faeze.heydari@uni-goettingen.de).</p>
+        
+        <div class="consent-checkbox">
+            
+                <label>
+                    <input type="radio" name="consent" id="consentCheckbox"> I have read and understood the information above and agree to participate in this study.
+                </label>
+           
+            <p class="consent-instruction">Please click on the radio button to enable the Next button.</p>
+        </div>
+    </div>
+    <button id="nextButton" disabled>Next</button>
+
+    <script>
+        const consentCheckbox = document.getElementById('consentCheckbox');
+        const nextButton = document.getElementById('nextButton');
+
+        consentCheckbox.addEventListener('change', function() {
+            nextButton.disabled = !this.checked;
+        });
+    </script>
+{% endblock %}

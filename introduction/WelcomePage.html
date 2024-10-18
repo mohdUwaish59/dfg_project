@@ -1,0 +1,31 @@
+{% extends 'otree/Page.html' %}
+{% load otree static %}
+
+{% block title %}
+    Welcome
+{% endblock %}
+
+{% block content %}
+
+    <p>
+    This HIT is an academic experiment on economic decision-making. Completing the entire experiment should not take more than a few minutes. The reward for participation is £1. A large share will be paid as a bonus payment, which depends on your decisions. Participation is voluntary; withdrawal forfeits payment. To avoid waiting times during the experiment, we will pay the bonuses in a few days once everybody has completed the experiment.
+    </p>
+
+    <p>
+    To participate, you must be between <strong>18 and 60 years old.</strong>
+    </p>
+
+    <h2>Information on data processing</h2>
+
+    <p>
+    The data collected for scientific purposes are anonymous and kept separate from any identifying information, ensuring privacy and confidentiality throughout the study. The University of Göttingen researchers process the data. Study results are published in scientific journals with statistical summaries that safeguard privacy. 
+    </p>
+
+    {% formfields %}
+
+    <p>
+    If you prefer not to take part, please close the browser tab.
+    </p>
+
+    {% next_button %}
+{% endblock %}
