@@ -71,8 +71,34 @@ async function createDyteMeeting() {
             body: JSON.stringify({
                 title: `Market Game Group ${GROUP_ID} Round ${ROUND_NUMBER}`,
                 preferred_region: "eu-central-1",
-                record_on_start: true
+                record_on_start: true,
+                recording_config: {
+                    file_name_prefix:`Market Game Group ${GROUP_ID} Round ${ROUND_NUMBER}`,
+                    max_seconds: 80,
+                }
             })
+
+            /*body: JSON.stringify({
+                title: `Market Game Group ${GROUP_ID} Round ${ROUND_NUMBER}`,
+                preferred_region: "eu-central-1",
+                record_on_start: true,
+                recording_config: {
+                    file_name_prefix: `Market Game Group ${GROUP_ID} Round ${ROUND_NUMBER}`,
+                    max_seconds: 80
+                },
+                ai_config: {
+                    transcription: {
+                        language: "en-US",
+                        profanity_filter: false,
+                        keywords: ["market", "game", "round", "group"]  // Optional: keywords relevant to your meeting
+                    },
+                    summarization: {
+                        word_limit: 500,
+                        text_format: "markdown",
+                        summary_type: "team_meeting"
+                    }
+                }
+            })*/
         });
 
         if (!response.ok) {

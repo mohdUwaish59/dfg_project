@@ -4,19 +4,19 @@ SESSION_CONFIGS = [
     {
         'name': 'T1_no_comm',
         'display_name': 'No communication',
-        'num_demo_participants': 18,
+        'num_demo_participants': 3,
         'app_sequence': ['introduction', 'T1_no_comm', 'post_questionnaire'],
     },
     {
         'name': 'T2_text_chat',
         'display_name': 'Text chat',
-        'num_demo_participants': 18,
+        'num_demo_participants': 3,
         'app_sequence': ['introduction', 'T2_text_chat', 'post_questionnaire'],
     },
     {
         'name': 'T3_video_chat',
         'display_name': 'Video chat',
-        'num_demo_participants': 18,
+        'num_demo_participants': 3,
         'app_sequence': ['introduction', 'T3_video_chat', 'post_questionnaire'],
     },
 ]

@@ -7,7 +7,7 @@ Market game experiment
 class Constants(BaseConstants):
     name_in_url = 'T1_no_comm'
     players_per_group = 3
-    num_rounds = 20
+    num_rounds = 1
     num_consumers = 6
     consumer_endowment = cu(100)
 

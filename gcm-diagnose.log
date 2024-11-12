@@ -1,0 +1,199 @@
+﻿Diagnose log at 2024-10-18T02:08:42Z
+
+AppPath: C:\Program Files\Git\mingw64\bin\git-credential-manager-core.exe
+InstallDir: C:\Program Files\Git\mingw64\bin\
+Version: 2.2.2
+
+------------
+Diagnostic: Environment
+Skipped: False
+Success: True
+Exception: None
+Log:
+OSType: Windows
+OSVersion: 10.0 (build 22631)
+Reading environment variables... OK
+ Variables:
+HOMEPATH=\Users\Mohd Uwaish
+DriverData=C:\Windows\System32\Drivers\DriverData
+COMPUTERNAME=LAPTOP-SH286RFJ
+GIT_TRACE2_PARENT_SID=740f003b-9d68-41e6-aeff-b078a4f60921
+CommonProgramFiles(x86)=C:\Program Files (x86)\Common Files
+POSTGIS_GDAL_ENABLED_DRIVERS=GTiff PNG JPEG GIF XYZ DTED USGSDEM AAIGrid
+OneDrive=C:\Users\Mohd Uwaish\OneDrive
+ChocolateyLastPathUpdate=133727294410380800
+WT_PROFILE_ID={61c54bbd-c2c6-5271-96e7-009a87ff44bf}
+SPARK_HOME=C:\spark\spark-3.4.0-bin-hadoop3
+ChocolateyToolsLocation=C:\tools
+SESSIONNAME=Console
+TMP=C:\Users\MOHDUW~1\AppData\Local\Temp
+PROCESSOR_REVISION=8c02
+PATHEXT=.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.PYW;.CPL
+PROJ_LIB=C:\Program Files\PostgreSQL\15\share\contrib\postgis-3.3\proj
+SystemDrive=C:
+GIT_EXEC_PATH=C:/Program Files/Git/mingw64/libexec/git-core
+TEMP=C:\Users\MOHDUW~1\AppData\Local\Temp
+LOCALAPPDATA=C:\Users\Mohd Uwaish\AppData\Local
+MSYSTEM=MINGW64
+TERM=xterm-256color
+GDAL_DATA=C:\Program Files\PostgreSQL\15\gdal-data
+PSModulePath=C:\Users\Mohd Uwaish\Documents\WindowsPowerShell\Modules;C:\Program Files\WindowsPowerShell\Modules;C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules
+COLORTERM=truecolor
+JAVA_HOME=C:\java\jdk
+USERDOMAIN=LAPTOP-SH286RFJ
+HADOOP_HOME=C:\hadoop
+PROCESSOR_LEVEL=6
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 140 Stepping 2, GenuineIntel
+TMPDIR=C:\Users\MOHDUW~1\AppData\Local\Temp
+ProgramFiles(x86)=C:\Program Files (x86)
+PUBLIC=C:\Users\Public
+NUMBER_OF_PROCESSORS=8
+CommonProgramFiles=C:\Program Files (x86)\Common Files
+WT_SESSION=32e04d00-4fd2-41e1-9dbb-5a5da253e2dd
+PYSPARK_HOME=C:\Users\Mohd Uwaish\AppData\Local\Programs\Python\Python311\python.exe
+WSLENV=WT_SESSION:WT_PROFILE_ID:CAROOT/up:
+PLINK_PROTOCOL=ssh
+ProgramData=C:\ProgramData
+ProgramFiles=C:\Program Files (x86)
+ChocolateyInstall=C:\ProgramData\chocolatey
+ProgramW6432=C:\Program Files
+HOME=C:\Users\Mohd Uwaish
+LC_CTYPE=C.UTF-8
+CAROOT=C:\Users\Mohd Uwaish\AppData\Local\mkcert
+ZES_ENABLE_SYSMAN=1
+LOGONSERVER=\\LAPTOP-SH286RFJ
+USERPROFILE=C:\Users\Mohd Uwaish
+SystemRoot=C:\WINDOWS
+CommonProgramW6432=C:\Program Files\Common Files
+POSTGIS_ENABLE_OUTDB_RASTERS=1
+USERDOMAIN_ROAMINGPROFILE=LAPTOP-SH286RFJ
+APPDATA=C:\Users\Mohd Uwaish\AppData\Roaming
+HOMEDRIVE=C:
+OPENSSL_CONF=C:\Program Files\PostgreSQL\psqlODBC\etc\openssl.cnf
+USERNAME=Mohd Uwaish
+PROCESSOR_ARCHITEW6432=AMD64
+PROCESSOR_ARCHITECTURE=x86
+OS=Windows_NT
+ComSpec=C:\WINDOWS\system32\cmd.exe
+Path=C:/Program Files/Git/mingw64/libexec/git-core;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\Mohd Uwaish\bin;C:\Users\Mohd Uwaish\miniconda3;C:\Users\Mohd Uwaish\miniconda3\Scripts;C:\Users\Mohd Uwaish\miniconda3\Library\bin;C:\Users\Mohd Uwaish\AppData\Local\Programs\Python\Python311\Scripts\;C:\Users\Mohd Uwaish\AppData\Local\Programs\Python\Python311\;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Users\Mohd Uwaish\anaconda3\python.exe;%SPARK_HOME%\bin;%HADOOP_HOME%\bin;%JAVA_HOME%\bin;C:\Program Files\dotnet\;C:\Program Files\Git\cmd;C:\ProgramData\chocolatey\bin;C:\Program Files\nodejs\;C:\Users\Mohd Uwaish\anaconda3;C:\Users\Mohd Uwaish\anaconda3\Scripts;C:\Users\Mohd Uwaish\anaconda3\Library\bin;;C:\Program Files\Docker\Docker\resources\bin;C:\tools\gsudo\Current;C:\Program Files\DDEV;C:\Users\Mohd Uwaish\AppData\Local\Microsoft\WindowsApps;C:\Users\Mohd Uwaish\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Mohd Uwaish\AppData\Roaming\npm;C:\Program Files\heroku\bin;
+windir=C:\WINDOWS
+OneDriveConsumer=C:\Users\Mohd Uwaish\OneDrive
+ALLUSERSPROFILE=C:\ProgramData
+
+
+------------
+Diagnostic: File system
+Skipped: False
+Success: True
+Exception: None
+Log:
+Temporary directory is 'C:\Users\Mohd Uwaish\AppData\Local\Temp\'...
+Checking basic file I/O...
+Writing to temporary file 'C:\Users\Mohd Uwaish\AppData\Local\Temp\37464b9582d3d261f0402982'... OK
+Reading from temporary file 'C:\Users\Mohd Uwaish\AppData\Local\Temp\37464b9582d3d261f0402982'... OK
+Deleting temporary file 'C:\Users\Mohd Uwaish\AppData\Local\Temp\37464b9582d3d261f0402982'... OK
+Testing IFileSystem instance...
+UserHomePath: C:\Users\Mohd Uwaish
+UserDataDirectoryPath: C:\Users\Mohd Uwaish\.gcm
+GetCurrentDirectory(): C:\Users\Mohd Uwaish\Desktop\MS\DFG\slider\DFG-main_21-Latest-Backup
+
+------------
+Diagnostic: Networking
+Skipped: False
+Success: True
+Exception: None
+Log:
+Checking networking and HTTP stack...
+Creating HTTP client... OK
+IsNetworkAvailable: True
+Sending HEAD request to http://example.com... OK
+Sending HEAD request to https://example.com... OK
+Acquiring free TCP port... OK
+Testing local HTTP loopback connections...
+Creating new HTTP listener for http://localhost:55789/... OK
+Waiting for loopback connection... OK
+Writing response... OK
+Waiting for response data... OK
+Loopback connection data OK
+
+------------
+Diagnostic: Git
+Skipped: False
+Success: True
+Exception: None
+Log:
+Getting Git version... OK
+Git version is '2.41.0.windows.3'
+Locating current repository... OK
+Git repository at 'C:/Users/Mohd Uwaish/Desktop/MS/DFG/slider/DFG-main_21-Latest-Backup/.git'
+Listing all Git configuration... OK
+Git configuration:
+file:C:/Program Files/Git/etc/gitconfig	diff.astextplain.textconv=astextplain
+file:C:/Program Files/Git/etc/gitconfig	filter.lfs.clean=git-lfs clean -- %f
+file:C:/Program Files/Git/etc/gitconfig	filter.lfs.smudge=git-lfs smudge -- %f
+file:C:/Program Files/Git/etc/gitconfig	filter.lfs.process=git-lfs filter-process
+file:C:/Program Files/Git/etc/gitconfig	filter.lfs.required=true
+file:C:/Program Files/Git/etc/gitconfig	http.sslbackend=openssl
+file:C:/Program Files/Git/etc/gitconfig	http.sslcainfo=C:/Program Files/Git/mingw64/etc/ssl/certs/ca-bundle.crt
+file:C:/Program Files/Git/etc/gitconfig	core.autocrlf=true
+file:C:/Program Files/Git/etc/gitconfig	core.fscache=true
+file:C:/Program Files/Git/etc/gitconfig	core.symlinks=false
+file:C:/Program Files/Git/etc/gitconfig	pull.rebase=false
+file:C:/Program Files/Git/etc/gitconfig	credential.helper=manager
+file:C:/Program Files/Git/etc/gitconfig	credential.https://dev.azure.com.usehttppath=true
+file:C:/Program Files/Git/etc/gitconfig	init.defaultbranch=master
+file:C:/Users/Mohd Uwaish/.gitconfig	user.name=mohdUwaish59
+file:C:/Users/Mohd Uwaish/.gitconfig	user.email=mohd.uwaish.e21@nsut.ac.in
+file:C:/Users/Mohd Uwaish/.gitconfig	filter.lfs.clean=git-lfs clean -- %f
+file:C:/Users/Mohd Uwaish/.gitconfig	filter.lfs.smudge=git-lfs smudge -- %f
+file:C:/Users/Mohd Uwaish/.gitconfig	filter.lfs.process=git-lfs filter-process
+file:C:/Users/Mohd Uwaish/.gitconfig	filter.lfs.required=true
+file:C:/Users/Mohd Uwaish/.gitconfig	credential.https://huggingface.co.provider=generic
+file:.git/config	core.repositoryformatversion=0
+file:.git/config	core.filemode=false
+file:.git/config	core.bare=false
+file:.git/config	core.logallrefupdates=true
+file:.git/config	core.symlinks=false
+file:.git/config	core.ignorecase=true
+file:.git/config	remote.origin.url=git@github.com:mohdUwaish59/dfg_project.git
+file:.git/config	remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
+file:.git/config	branch.main.remote=origin
+file:.git/config	branch.main.merge=refs/heads/main
+file:.git/config	branch.main.vscode-merge-base=origin/main
+
+
+------------
+Diagnostic: Credential storage
+Skipped: False
+Success: True
+Exception: None
+Log:
+ICredentialStore instance is of type: CredentialStore
+Writing test credential... OK
+Reading test credential... OK
+Deleting test credential... OK
+
+------------
+Diagnostic: Microsoft authentication (AAD/MSA)
+Skipped: False
+Success: True
+Exception: None
+Log:
+Broker is not enabled.
+Flow type is: Auto
+Gathering MSAL token cache data... OK
+CacheDirectory: C:\Users\Mohd Uwaish\AppData\Local\.IdentityService
+CacheFileName: msal.cache
+CacheFilePath: C:\Users\Mohd Uwaish\AppData\Local\.IdentityService\msal.cache
+Creating cache helper... OK
+Verifying MSAL token cache persistence... OK
+
+------------
+Diagnostic: GitHub API
+Skipped: False
+Success: True
+Exception: None
+Log:
+Using 'https://github.com/' as API target.
+Querying '/meta' endpoint... OK
+
