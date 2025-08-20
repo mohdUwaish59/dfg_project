@@ -1,0 +1,285 @@
+{% extends "otree/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Communication Stage
+{% endblock %}
+
+{% block content %}
+    {{ include_sibling 'PersistentAlerts.html' }}
+
+    <div class="border p-4">
+        <table class="table table-sm" style="table-layout: fixed">
+            <thead>
+                <th scope="col"></th>
+                    {{ for name in nicknames }}
+                        <th scope="col"> {{ name }} </th>
+                    {{ endfor }}
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Gender row -->
+                <tr>
+                    <th scope="row"> Gender </th>
+                    {{ for player in group.get_players }}
+                        <td> {{ player.participant.gender }} </td>
+                    {{ endfor }}
+                </tr>
+
+                <!-- Age row -->
+                <tr>
+                    <th scope="row"> Age </th>
+                    {{ for player in group.get_players }}
+                        <td> {{ player.participant.age }} </td>
+                    {{ endfor }}
+                </tr>
+
+                <!-- Education row -->
+                <tr>
+                    <th scope="row"> Education </th>
+                    {{ for player in group.get_players }}
+                        <td> {{ player.participant.education }} </td>
+                    {{ endfor }}
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div id="video-container" style="width: 200%; height: 600px; margin-bottom: 20px;">
+                    <!-- The iframe will be inserted here by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+import { getDatabase, ref, set, get, onValue } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-database.js";
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+    apiKey: "AIzaSyBVug8ltuS9OviR20t2JH7ozbaf6vJyKQE",
+    authDomain: "dfg-project-158d3.firebaseapp.com",
+    databaseURL: "https://dfg-project-158d3-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "dfg-project-158d3",
+    storageBucket: "dfg-project-158d3.appspot.com",
+    messagingSenderId: "741878391924",
+    appId: "1:741878391924:web:a9dd37d585334bc71a1d21",
+    measurementId: "G-WWD7KLLJ54"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
+
+const DYTE_BASE_URL = 'https://api.dyte.io/v2';
+const DYTE_AUTH_TOKEN = 'Basic NzE5MTI5ZTAtNDM4ZC00ODNlLTljMmItODM1ZDU2NDE3YmQ4OjE4ODRkMDhhNDNiZjM3ZjAzODJk';
+const FIRM_NAME = 'Firm {% if player.id_in_group == 1 %}A{% elif player.id_in_group == 2 %}B{% else %}C{% endif %}';
+const GROUP_ID = '{{ player.group.id_in_subsession }}';
+const SESSION_ID = '{{ session.id }}';
+const ROUND_NUMBER = {{ round_number }};
+
+function logDebug(message) {
+    //console.log(message);
+}
+
+async function createDyteMeeting() {
+    logDebug('Creating Dyte meeting...');
+    try {
+        const response = await fetch(`${DYTE_BASE_URL}/meetings`, {
+            method: 'POST',
+            headers: {
+                'Authorization': DYTE_AUTH_TOKEN,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                title: `Discussion meeting of Group ${GROUP_ID} Round ${ROUND_NUMBER}`,
+                preferred_region: "eu-central-1",
+                record_on_start: true,
+                recording_config: {
+                    file_name_prefix:`Discussion meeting of Group ${GROUP_ID} Round ${ROUND_NUMBER}`,
+                    max_seconds: 80,
+                }
+            })
+
+            /*body: JSON.stringify({
+                title: `Market Game Group ${GROUP_ID} Round ${ROUND_NUMBER}`,
+                preferred_region: "eu-central-1",
+                record_on_start: true,
+                recording_config: {
+                    file_name_prefix: `Market Game Group ${GROUP_ID} Round ${ROUND_NUMBER}`,
+                    max_seconds: 80
+                },
+                ai_config: {
+                    transcription: {
+                        language: "en-US",
+                        profanity_filter: false,
+                        keywords: ["market", "game", "round", "group"]  // Optional: keywords relevant to your meeting
+                    },
+                    summarization: {
+                        word_limit: 500,
+                        text_format: "markdown",
+                        summary_type: "team_meeting"
+                    }
+                }
+            })*/
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            logDebug(`Error response: ${JSON.stringify(errorData)}`);
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        logDebug(`Full API response: ${JSON.stringify(data)}`);
+
+        if (data.success && data.data && data.data.id) {
+            logDebug(`Meeting created: ${data.data.id}`);
+            return data.data.id;
+        } else {
+            throw new Error('Unexpected API response format');
+        }
+    } catch (error) {
+        logDebug(`Error in createDyteMeeting: ${error.message}`);
+        throw error;
+    }
+}
+
+async function addParticipant(meetingId) {
+    logDebug(`Adding participant ${FIRM_NAME} to meeting ${meetingId}...`);
+    try {
+        const response = await fetch(`${DYTE_BASE_URL}/meetings/${meetingId}/participants`, {
+            method: 'POST',
+            headers: {
+                'Authorization': DYTE_AUTH_TOKEN,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                name: FIRM_NAME,
+                preset_name: "group_call_participant",
+                client_specific_id: `${GROUP_ID}_${FIRM_NAME}`
+            })
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            logDebug(`Error response: ${JSON.stringify(errorData)}`);
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        logDebug(`Full API response: ${JSON.stringify(data)}`);
+
+        if (data.success && data.data && data.data.token) {
+            logDebug(`Participant ${FIRM_NAME} added, token: ${data.data.token}`);
+            return data.data.token;
+        } else {
+            throw new Error('Unexpected API response format');
+        }
+    } catch (error) {
+        logDebug(`Error in addParticipant: ${error.message}`);
+        throw error;
+    }
+}
+
+async function getMeetingId() {
+    const meetingRef = ref(database, `sessions/${SESSION_ID}/groups/${GROUP_ID}/rounds/${ROUND_NUMBER}/meetingId`);
+    try {
+        const snapshot = await get(meetingRef);
+        const meetingId = snapshot.val();
+        logDebug(`Retrieved meeting ID from Firebase: ${meetingId}`);
+        return meetingId;
+    } catch (error) {
+        logDebug(`Error retrieving meeting ID from Firebase: ${error.message}`);
+        throw error;
+    }
+}
+
+async function setMeetingId(meetingId) {
+    const meetingRef = ref(database, `sessions/${SESSION_ID}/groups/${GROUP_ID}/rounds/${ROUND_NUMBER}/meetingId`);
+    try {
+        await set(meetingRef, meetingId);
+        logDebug(`Meeting ID set in Firebase: ${meetingId}`);
+    } catch (error) {
+        logDebug(`Error setting meeting ID in Firebase: ${error.message}`);
+        throw error;
+    }
+}
+
+async function setupDyteMeeting() {
+    try {
+        const meetingCreatorRef = ref(database, `sessions/${SESSION_ID}/groups/${GROUP_ID}/rounds/${ROUND_NUMBER}/meetingCreator`);
+        const meetingIdRef = ref(database, `sessions/${SESSION_ID}/groups/${GROUP_ID}/rounds/${ROUND_NUMBER}/meetingId`);
+        let meetingId = null;
+
+        // Try to become the meeting creator
+        const creatorSnapshot = await get(meetingCreatorRef);
+        
+        if (!creatorSnapshot.exists() || creatorSnapshot.val() === null) {
+            // No creator set yet, try to set ourselves as the creator
+            try {
+                await set(meetingCreatorRef, FIRM_NAME);
+                logDebug(`${FIRM_NAME} set as meeting creator.`);
+                
+                // Double-check if we're still the creator (in case of race condition)
+                const doubleCheckSnapshot = await get(meetingCreatorRef);
+                if (doubleCheckSnapshot.val() === FIRM_NAME) {
+                    // We are confirmed as the creator, so create the meeting
+                    logDebug(`${FIRM_NAME} is creating the meeting.`);
+                    meetingId = await createDyteMeeting();
+                    await setMeetingId(meetingId);
+                } else {
+                    logDebug(`Another player became the creator: ${doubleCheckSnapshot.val()}`);
+                }
+            } catch (error) {
+                logDebug(`Failed to set meeting creator: ${error.message}`);
+            }
+        } else {
+            logDebug(`Meeting creator already set: ${creatorSnapshot.val()}`);
+        }
+
+        // If we didn't create the meeting, wait for it to be created
+        if (!meetingId) {
+            logDebug(`Waiting for meeting to be created...`);
+            await new Promise((resolve) => {
+                onValue(meetingIdRef, (snapshot) => {
+                    meetingId = snapshot.val();
+                    if (meetingId) {
+                        logDebug(`Meeting ID received: ${meetingId}`);
+                        resolve();
+                    }
+                });
+            });
+        }
+
+        // Ensure we have a valid meetingId before proceeding
+        if (!meetingId) {
+            throw new Error("Failed to obtain a valid meeting ID");
+        }
+
+        const authToken = await addParticipant(meetingId);
+        
+        logDebug('Creating iframe for Dyte meeting with forced auto-join...');
+        const iframe = document.createElement('iframe');
+        iframe.src = `https://app.dyte.io/v2/meeting?authToken=${authToken}&roomName=MarketGameGroup${GROUP_ID}&showSetupScreen=false&disableVideoBackground=true&disableLocalVideoBackground=true&defaultMicOn=false&defaultCameraOn=false&autoJoin=true&mode=fill`;
+        iframe.allow = "camera;microphone;fullscreen;speaker;display-capture;autoplay;clipboard-read;clipboard-write";
+        iframe.style = "width: 100%; height: 100%; border: none;";
+        
+        const videoContainer = document.getElementById('video-container');
+        videoContainer.innerHTML = '';
+        videoContainer.appendChild(iframe);
+
+        logDebug(`${FIRM_NAME} joined group meeting ${meetingId} successfully.`);
+    } catch (error) {
+        logDebug(`Error in setupDyteMeeting: ${error.message}`);
+    }
+}
+
+// Call setupDyteMeeting when the page loads
+window.onload = setupDyteMeeting;
+    </script>
+{% endblock %}

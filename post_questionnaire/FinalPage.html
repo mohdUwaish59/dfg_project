@@ -1,0 +1,17 @@
+{% extends 'otree/Page.html' %}
+{% load otree static %}
+
+{% block title %}
+    Experiment Complete
+{% endblock %}
+
+{% block content %}
+    <h2>Thank you for participating!</h2>
+    <p>Your experiment is now complete. Please click the link below to finalize your participation:</p>
+
+    <a href="{{ qualtrics_link }}" target="_blank" class="btn btn-primary">Complete on Prolific</a>
+
+    <script>
+        setTimeout(function() { location.href="{{ qualtrics_link }}" }, 3000);
+    </script>
+{% endblock %}

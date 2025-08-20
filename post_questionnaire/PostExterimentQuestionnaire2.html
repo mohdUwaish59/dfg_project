@@ -1,0 +1,169 @@
+{% extends 'otree/Page.html' %}
+{% load otree static %}
+
+{% block title %}
+    Post-Experimental Questionnaire Part 2
+{% endblock %}
+
+{% block content %}
+
+<style>
+    td.numberColumn {
+        padding-right: 2em;
+        vertical-align: top;
+    }
+    td.questionColumn {
+        vertical-align: top;
+        padding-bottom: 1em
+    }
+    td.leftOfMultiChoice {
+        text-align: right;
+        vertical-align: top;
+        padding-bottom: 3em;
+    }
+    td.rightOfMultiChoice {
+        text-align: left;
+        vertical-align: top;
+        padding-bottom: 3em;
+    }
+    td.multiChoice {
+        text-align: center;
+        vertical-align: top;
+        padding-bottom: 3em;
+    }
+
+</style>
+
+    <table>
+        <!-- First row -->
+        <tr>
+            <td class="numberColumn">
+                1.
+            </td>
+            <td class="questionColumn" colspan="3">
+                “Are you generally a person who is fully prepared to take risks, or do you try to avoid taking risks?”
+            </td>
+        </tr>
+        <tr>
+            <td>
+            </td>
+            <td class="leftOfMultiChoice">
+                Unwilling to take risks &nbsp;
+            </td>
+            <td class="multiChoice">
+                {{ for choice in form.willingness_to_take_risks }}
+                    &nbsp; {{ choice }} &nbsp;
+                {{ endfor }}
+            </td>
+            <td class="rightOfMultiChoice">
+                &nbsp; Fully prepared to take risks
+            </td>
+        </tr>
+
+        <!-- Second row -->
+        <tr>
+            <td class="numberColumn">
+                2.
+            </td>
+            <td class="questionColumn" colspan="3">
+                “How willing are you to give to good causes without expecting anything in return?”
+            </td>
+        </tr>
+        <tr>
+            <td>
+            </td>
+            <td class="leftOfMultiChoice">
+                Not at all willing &nbsp;
+            </td>
+            <td class="multiChoice">
+                {{ for choice in form.willingness_to_give_to_good_causes }}
+                    &nbsp; {{ choice }} &nbsp;
+                {{ endfor }}
+            </td>
+            <td class="rightOfMultiChoice">
+                &nbsp; Extremely willing
+            </td>
+        </tr>
+
+        <!-- Third row -->
+        <tr>
+            <td class="numberColumn">
+                3.
+            </td>
+            <td class="questionColumn" colspan="3">
+                “How competitive do you consider yourself to be?”
+            </td>
+        </tr>
+        <tr>
+            <td>
+            </td>
+            <td class="leftOfMultiChoice">
+                Not competitive at all &nbsp;
+            </td>
+            <td class="multiChoice">
+                {{ for choice in form.competitiveness }}
+                    &nbsp; {{ choice }} &nbsp;
+                {{ endfor }}
+            </td>
+            <td class="rightOfMultiChoice">
+                &nbsp; Very competitive
+            </td>
+        </tr>
+
+        <!-- Fourth row -->
+        <tr>
+            <td class="numberColumn">
+                4.
+            </td>
+            <td class="questionColumn" colspan="3">
+                How well does the following statement describe you as a person?<br/>
+                “As long as I am not convinced otherwise, I assume that people have only the best intentions.”
+            </td>
+        </tr>
+        <tr>
+            <td>
+            </td>
+            <td class="leftOfMultiChoice">
+                Does not describe me at all &nbsp;
+            </td>
+            <td class="multiChoice">
+                {{ for choice in form.assuming_best_intentions }}
+                    &nbsp; {{ choice }} &nbsp;
+                {{ endfor }}
+            </td>
+            <td class="rightOfMultiChoice">
+                &nbsp; Describes me perfectly
+            </td>
+        </tr>
+
+        <!-- Fifth row -->
+        <tr>
+            <td class="numberColumn">
+                5.
+            </td>
+            <td class="questionColumn" colspan="3">
+                You confide an intimate secret to a close friend, asking him/her not to tell anyone.
+                Shortly afterward, you realize that he/she has told it to another acquaintance. How betrayed do you feel?
+            </td>
+        </tr>
+        <tr>
+            <td>
+            </td>
+            <td class="leftOfMultiChoice">
+                Not at all betrayed &nbsp;
+            </td>
+            <td class="multiChoice">
+                {{ for choice in form.feeling_betrayed }}
+                    &nbsp; {{ choice }} &nbsp;
+                {{ endfor }}
+            </td>
+            <td class="rightOfMultiChoice">
+                &nbsp; Extremely betrayed
+            </td>
+        </tr>
+
+    </table>
+
+    {{ next_button }}
+
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends 'otree/Page.html' %}
+{% load otree static %}
+
+{% block title %}
+    Participant role allocation
+{% endblock %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Algorithm Assignment</title>
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+    }
+    .loading-circle {
+      border: 8px solid #f3f3f3;
+      border-top: 8px solid #3498db;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 1s linear infinite;
+      margin: 50px auto;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    #assignment {
+      display: none;
+      font-size: 1.5em;
+      margin-top: 20px;
+    }
+    button[disabled] {
+      background-color: grey;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+    <hr>
+  <h3>This study uses an algorithm to allocate participants as either firms or customers. The assignment is determined entirely by the algorithm. </h3>
+  <div id="loader">
+    <div class="loading-circle"></div>
+    <p>Determining your role...</p>
+  </div>
+  <div id="assignment">
+    <p><strong>You have been assigned the role of a firm.</strong></p>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Disable the Next button initially
+        const nextButton = document.querySelector('button.otree-btn-next');
+        if (nextButton) {
+            nextButton.disabled = true;
+            nextButton.style.pointerEvents = 'none'; // Prevent any interaction
+
+            // Simulate algorithm delay
+            setTimeout(() => {
+                document.getElementById('loader').style.display = 'none';
+                document.getElementById('assignment').style.display = 'block';
+
+                // Enable the Next button after delay
+                nextButton.disabled = false;
+                nextButton.style.pointerEvents = 'auto'; // Allow interaction
+            }, 7000); // 7 seconds delay
+        }
+    });
+  </script>
+</body>
+</html>
+
+    {% next_button %}
+
+{% endblock %}

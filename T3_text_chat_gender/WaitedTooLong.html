@@ -1,0 +1,16 @@
+{% extends 'otree/Page.html' %}
+{% load otree static %}
+
+{% block title %}
+    Thank you for participating!
+{% endblock %}
+
+{% block content %}
+    <p>Unfortunately no other participants showed up. Please press the button below to finalize your participation.</p>
+
+    <a href="{{ qualtrics_link }}" target="_blank" class="btn btn-primary">Complete on Prolific</a>
+
+    <script>
+        //setTimeout(function() { location.href="{{ qualtrics_link }}" }, 3000);
+    </script>
+{% endblock %}

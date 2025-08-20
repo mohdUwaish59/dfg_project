@@ -1,0 +1,62 @@
+{% extends 'otree/Page.html' %}
+{% load otree static %}
+
+
+{% block title %}
+    Price-setting stage
+{% endblock %}
+
+{% block content %}
+   <style>
+        .otree-timer {
+            display: none;
+        }
+    </style>
+
+
+    <p>You are in the role of <b>{{ player.nickname }}</b> and your task is to set a sales price for a product also sold by {{ other_firms }}.</p>
+
+    <!--<div class="border p-4">
+        <table class="table table-sm" style="table-layout: fixed">
+            <thead>
+               
+                <tr>
+                    <th scope="col"></th>
+                    {{ for name in nicknames }}
+                        <th scope="col"> {{ name }} </th>
+                    {{ endfor }}
+                </tr>
+            </thead>
+               <tbody>
+               
+                <tr>
+                    <th scope="row"> Gender </th>
+                    {{ for player in group.get_players }}
+                        <td> {{ player.participant.gender }} </td>
+                    {{ endfor }}
+                </tr>
+
+                
+                <tr>
+                    <th scope="row"> Age </th>
+                    {{ for player in group.get_players }}
+                        <td> {{ player.participant.age }} </td>
+                    {{ endfor }}
+                </tr>
+
+                
+                <tr>
+                    <th scope="row"> Education </th>
+                    {{ for player in group.get_players }}
+                        <td> {{ player.participant.education }} </td>
+                    {{ endfor }}
+                </tr>
+            </tbody>   
+        </table>
+    </div> -->
+
+    <br/>
+
+    {% formfields %}
+    {% next_button %}
+{% endblock %}

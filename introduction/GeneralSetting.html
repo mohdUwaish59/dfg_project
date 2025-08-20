@@ -1,0 +1,19 @@
+{% extends 'otree/Page.html' %}
+{% load otree static %}
+
+{% block title %}
+    General Setting
+{% endblock %}
+
+{% block content %}
+
+    <p>
+        In the experiment, <b>you are one of three firms</b> (A,&nbsp;B,&nbsp;C) in a market.
+        You will be in the <b>same market</b> with the <b>same firms</b> all the time.
+        You can earn Experimental Currency Units (ECU).
+        At the end, the money will be converted at an exchange rate: <b>{{ conversion_rate }}&nbsp;ECU&nbsp;=&nbsp;&pound;1.</b>
+    </p>
+
+    {% next_button %}
+
+{% endblock %}

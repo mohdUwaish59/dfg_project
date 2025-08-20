@@ -1,0 +1,75 @@
+{% extends 'otree/Page.html' %}
+{% load otree static %}
+
+{% block title %}
+    Communication Stage
+{% endblock %}
+
+{% block content %}
+    <p>
+        You represent <b>{{ player.nickname }}</b> and now have the opportunity to discuss the experiment with {{ other_firms }}.
+    </p>
+
+    <div class="border p-4">
+        <table class="table table-sm" style="table-layout: fixed">
+            <thead>
+                <!-- Firm row -->
+                <tr>
+                    <th scope="col"></th>
+                    {{ for name in nicknames }}
+                        <th scope="col"> {{ name }} </th>
+                    {{ endfor }}
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Gender row -->
+                <tr>
+                    <th scope="row"> Gender </th>
+                    {{ for player in group.get_players }}
+                        <td> {{ player.participant.gender }} </td>
+                    {{ endfor }}
+                </tr>
+
+                <!-- Age row -->
+                <tr>
+                    <th scope="row"> Age </th>
+                    {{ for player in group.get_players }}
+                        <td> {{ player.participant.age }} </td>
+                    {{ endfor }}
+                </tr>
+
+                <!-- Education row -->
+                <tr>
+                    <th scope="row"> Education </th>
+                    {{ for player in group.get_players }}
+                        <td> {{ player.participant.education }} </td>
+                    {{ endfor }}
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <br/>
+
+    {{ chat nickname=player.nickname }}
+
+    <!--
+    <style>
+        .otree-chat__messages { background: white }
+    </style>
+    -->
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var chat_input = document.getElementsByClassName('otree-chat__input')[0];
+            chat_input.setAttribute('placeholder', 'Type your messages here');
+
+            //var send_button = document.getElementsByClassName('otree-chat__btn-send')[0];
+            //send_button.setAttribute('class', 'btn btn-primary btn-sm');
+            //send_button.style.color = 'white';
+            //send_button.style.background = '#0d6efd';
+            //send_button.style.border = 'solid 2px #0d6efd';
+        });
+    </script>
+
+{% endblock %}

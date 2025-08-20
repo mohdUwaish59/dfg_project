@@ -1,0 +1,25 @@
+{% extends 'otree/Page.html' %}
+{% load otree static %}
+
+{% block title %}
+  Payoff Information
+{% endblock %}
+
+{% block content %}
+    <p>Summary of period {{ player.round_number }}</p>
+
+    <ul>
+        <p> Market Price: {{ lowest_price }}</p>
+        {% for p in players_info %}
+            <li>{{ p.firm_name }}'s price: {{ p.price }}</li>
+        {% endfor %}
+    </ul>
+
+    <p>Your ({{ player.firm_name }}'s) earnings: {{ earnings }}</p>
+    <p>Each consumer is subtracted: <span style="color: red"> {{ each_consumer_subtracted }}</span></p>
+    <p>The group of consumers is subtracted: <span style="color: red"> {{ group_consumers_subtracted }}</span></p>
+
+    <br/>
+
+    
+{% endblock %}

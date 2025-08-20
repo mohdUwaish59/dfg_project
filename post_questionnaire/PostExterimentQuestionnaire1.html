@@ -1,0 +1,114 @@
+{% extends 'otree/Page.html' %}
+{% load otree static %}
+
+{% block title %}
+    Post-Experimental Questionnaire Part 1
+{% endblock %}
+
+{% block content %}
+
+    <style>
+        td.numberColumn {
+            vertical-align: top;
+            padding-left: 2em;
+        }
+        td.questionColumn {
+            padding-left: 2em;
+            padding-bottom: 3em;
+        }
+    </style>
+
+    <p>
+        Before we conclude the experiment, we kindly ask you to complete the following questions.
+        Completing the questions is required for the receipt of your compensation.
+    </p>
+
+    <p>
+        Please think about how likely it is that you will behave in the way described in the three situations below.
+    </p>
+
+    <br>
+
+    <table>
+        <tr>
+            <td class="numberColumn">
+                I)
+            </td>
+            <td class="questionColumn">
+                <p>
+                    You and a group of college students worked very hard on a project. Your professor singles you out for a better grade than anyone else.
+                </p>
+
+                <p>
+                    <i>You would feel you should not accept it.</i>
+                </p>
+
+                <!-- Scale 1-5 (1: “not likely”; 5:  “very likely.”) -->
+
+                <p>
+                    Not likely &nbsp;
+                    {{ for choice in form.not_accepting_better_grade }}
+                        &nbsp; &nbsp; {{ choice }} &nbsp; &nbsp;
+                    {{ endfor }}
+                    &nbsp; Very likely
+                </p>
+
+            </td>
+        </tr>
+
+        <tr>
+            <td class="numberColumn">
+                II)
+            </td>
+            <td class="questionColumn">
+                <p>
+                    You are driving down the road, and you hit a small animal.
+                </p>
+
+                <p>
+                    <i>You’d feel bad you hadn’t been more alert driving down the road.</i>
+                </p>
+
+                <!-- Scale 1-5 (1: “not likely”; 5:  “very likely.”) -->
+
+                <p>
+                    Not likely &nbsp;
+                    {{ for choice in form.feeling_bad_about_not_being_more_alert }}
+                        &nbsp; &nbsp; {{ choice }} &nbsp; &nbsp;
+                    {{ endfor }}
+                    &nbsp; Very likely
+                </p>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="numberColumn">
+                III)
+            </td>
+            <td class="questionColumn">
+                <p>
+                    You make a mistake at your student job and find out a coworker is blamed for the error.
+                </p>
+
+                <p>
+                    <i>You would feel unhappy and eager to correct the situation.</i>
+                </p>
+
+                <!-- Scale 1-5 (1: “not likely”; 5:  “very likely.”) -->
+
+                <p>
+                    Not likely &nbsp;
+                    {{ for choice in form.feeling_unhappy_about_coworker_being_blamed }}
+                        &nbsp; &nbsp; {{ choice }} &nbsp; &nbsp;
+                    {{ endfor }}
+                    &nbsp; Very likely
+                </p>
+            </td>
+        </tr>
+    </table>
+
+    <br>
+
+    {{ next_button }}
+
+{% endblock %}

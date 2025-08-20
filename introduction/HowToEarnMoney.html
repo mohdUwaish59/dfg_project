@@ -1,0 +1,25 @@
+{% extends 'otree/Page.html' %}
+{% load otree static %}
+
+{% block title %}
+    How you can earn money
+{% endblock %}
+
+{% block content %}
+
+    <ul>
+    <li>In each period, firms set a price <b>(0-100 ECU)</b> for the sale of goods to six consumers.</li>
+    <li>The firm that sets the <b>lowest price</b> sets the market price and serves all consumers.<br>
+        The profit is: <b>market price</b>&nbsp;&times;&nbsp;<b>number of consumers</b> served.</li>
+    <li>The other firms that have chosen a higher price do not make any money.</li>
+    <li>If more than one firm set the lowest price, they divide the consumers among themselves.</li>
+    <li>The <b>consumers</b> are <b>other participants</b> of the experiment. In each period, they receive a new endowment of 100&nbsp;ECU and must buy one good at the market price.<br>
+        Thus, setting <b>higher market prices</b> lowers the <b>payoffs</b> of the <b>consumers</b>. 
+    <li>After each period, firms learn the price choices and profits of all firms, their resulting own profit, and consumer expenditures.</li>
+    <li>The <b>experiment consists of at least 20 periods.</b> Once the 20<sup>th</sup> period is over,
+        the computer will throw a 6-sided virtual dice that will determine whether the experiment continues.
+        If a value of six is shown, the experiment is over. If any other value is shown, the experiment continues.</li>
+    </ul>
+
+    {% next_button %}
+{% endblock %}

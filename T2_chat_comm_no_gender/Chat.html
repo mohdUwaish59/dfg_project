@@ -1,0 +1,36 @@
+{% extends 'otree/Page.html' %}
+{% load otree static %}
+
+{% block title %}
+    Communication Stage
+{% endblock %}
+
+{% block content %}
+    <p>
+        You represent <b>{{ player.nickname }}</b> and now have the opportunity to discuss the experiment with {{ other_firms }}.
+    </p>
+
+    <br/>
+
+    {{ chat nickname=player.nickname }}
+
+    <!--
+    <style>
+        .otree-chat__messages { background: white }
+    </style>
+    -->
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var chat_input = document.getElementsByClassName('otree-chat__input')[0];
+            chat_input.setAttribute('placeholder', 'Type your messages here');
+
+            //var send_button = document.getElementsByClassName('otree-chat__btn-send')[0];
+            //send_button.setAttribute('class', 'btn btn-primary btn-sm');
+            //send_button.style.color = 'white';
+            //send_button.style.background = '#0d6efd';
+            //send_button.style.border = 'solid 2px #0d6efd';
+        });
+    </script>
+
+{% endblock %}

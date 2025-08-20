@@ -1,0 +1,81 @@
+{% extends 'otree/Page.html' %}
+{% load otree static %}
+
+{% block title %}
+    Dice Outcome
+{% endblock %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Algorithm Assignment</title>
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+    }
+    .loading-circle {
+      border: 8px solid #f3f3f3;
+      border-top: 8px solid #3498db;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 1s linear infinite;
+      margin: 50px auto;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    #assignment {
+      display: none;
+      font-size: 1.5em;
+      margin-top: 20px;
+    }
+    button[disabled] {
+      background-color: grey;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+    <hr>
+  <div id="loader">
+    <div class="loading-circle"></div>
+    <p>Rolling the Dice...</p>
+  </div>
+  <div id="assignment">
+    <p><strong>{{round_number_message}}</strong></p>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Disable the Next button initially
+        const nextButton = document.querySelector('button.otree-btn-next');
+        if (nextButton) {
+            nextButton.disabled = true;
+            nextButton.style.pointerEvents = 'none'; // Prevent any interaction
+
+            // Simulate algorithm delay
+            setTimeout(() => {
+                document.getElementById('loader').style.display = 'none';
+                document.getElementById('assignment').style.display = 'block';
+
+                // Enable the Next button after delay
+                nextButton.disabled = false;
+                nextButton.style.pointerEvents = 'auto'; // Allow interaction
+            }, 3000); // 3 seconds delay
+        }
+    });
+  </script>
+</body>
+</html>
+
+    {% next_button %}
+
+{% endblock %}

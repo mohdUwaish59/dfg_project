@@ -1,0 +1,15 @@
+{% extends 'otree/Page.html' %}
+{% load otree static %}
+
+{% block title %}
+    The Survey is about to begin
+{% endblock %}
+
+{% block content %}
+
+    Please give the browser permission to access your webcam and microphone on the next screen.
+
+    <br/><br/>
+
+    {% next_button %}
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Data Protection Information
+{% endblock %}
+
+{% block styles %}
+    <style>
+        .consent-instruction {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 5px;
+            font-style: italic;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+
+    <div class="card bg-light-subtle text-dark mb-3">
+        <div class="card-body">
+            <p>The data are collected exclusively for scientific purposes. The experimental data collected in this study are completely anonymous, i.e., they do not allow any conclusions to be drawn about your person, as identifying data collected for the payment of participation compensation is stored separately from the experimental data at all times.</p>
+            <p>The processing is carried out by researchers at the University of Göttingen (Chairs for Experimental Economics and for Affective Neuroscience and Psychophysiology). As part of the publication of the study results in scientific journals, the results of statistical analyses will be published in summarized form; conclusions about individual persons are always excluded.</p>
+            <p>The principal investigators for this study are <strong>Prof. Dr. Anne Schacht</strong>, Georg-Elias-Müller Institute for Psychology, University of Göttingen, Email: <a href="mailto:schacht@psych.uni-goettingen.de">schacht@psych.uni-goettingen.de</a> , and <strong>Prof. Dr. Holger Rau</strong>, Faculty of Business and Economics, University of Göttingen, Email: <a href="mailto:holger.rau@uni-goettingen.de">holger.rau@uni-goettingen.de</a></p>
+            <p>Recorded data will be stored pseudonymously, meaning only the study team can identify individual participants. After the study is completed, the data will be fully anonymized, making it impossible to link it to individual participants. Data protection guidelines will be strictly followed, and you may object to further processing of your data at any time before anonymization and request its deletion or destruction. We thank you for your cooperation.</p>
+            <p>You also have the right to access information about your processed personal data, including a free copy. This right of access applies to the principal investigators.</p>
+        </div>
+
+        <div class="card-footer">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="data_protection_consent" value="" id="dataProtectionConsent">
+                <label class="form-check-label" for="dataProtectionConsent">
+                    I have read and understood the information on data protection and processing. I have no further questions regarding the use of my data. I hereby consent to the collection and processing of my data as described above.
+                </label>
+
+                <p class="consent-instruction">Please click the check box to enable the Next button.</p>
+            </div>
+        </div>
+    </div>
+
+    {% next_button %}
+
+    <script>
+        const consentCheckbox = document.getElementById('dataProtectionConsent');
+        const nextButton = document.querySelector('button.otree-btn-next');
+
+        // Make the 'Next' button initially disabled
+        document.addEventListener('DOMContentLoaded', () => {
+            nextButton.disabled = true;
+        });
+
+        consentCheckbox.addEventListener('change', function() {
+            nextButton.disabled = !this.checked;
+        });
+    </script>
+{% endblock %}

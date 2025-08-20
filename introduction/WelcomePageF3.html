@@ -1,0 +1,89 @@
+{% extends 'otree/Page.html' %}
+{% load otree static %}
+
+{% block title %}
+    Welcome
+{% endblock %}
+
+{% block styles %}
+    <style>
+        .confirm-instruction {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 5px;
+            font-style: italic;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <p>
+        This is an academic experiment on economic decision-making. To participate, you must be between <strong>18 and 60 years old.</strong>
+    </p>
+    <p>
+        <!-- Participant fee made bold (14.08.2025) by Mohd Uwaish-->
+        As a participant, you will engage in a virtual market, making economic decisions related to a virtual good. Completing the entire experiment will take approximately 45 minutes. The base reward for participation is <strong> {{ participation_fee }} </strong>, with a large portion paid as a bonus based on your decisions. Participation is voluntary; if you choose to withdraw, you will forfeit payment. To avoid delays, bonus payments will be made a few days after all participants have completed the experiment.
+    </p>
+    <div style="background-color: #fff8e1; border-left: 4px solid #ffc107; padding: 12px; margin: 15px 0;">
+    <p>
+    The experimenters will be available online throughout the experiment via 
+    <a href="https://app.prolific.com/researcher/workspaces/67b3085c3e79170a627c442c/messages?view=personal&inbox=primary" 
+       target="_blank" 
+       rel="noopener noreferrer">
+       here
+    </a>. 
+    Please feel free to reach out with any questions or concerns.
+</p>
+    </div>
+    <h2>Termination Rule</h2>
+    <p>
+        If a participant chooses to leave the room early, the experiment will end immediately, and only the show-up fee will be provided to that individual. However, the remaining participants will receive full compensation for their time. We strongly encourage all participants to stay until the end, as your full participation is essential for the study’s success and for ensuring fair compensation for everyone involved.
+    </p>
+
+    <div style="border: 1px solid #ddd; background-color: #f9f9f9; padding: 15px; border-radius: 5px;">
+        <!-- Video Instructions update (14.08.2025) by Mohd Uwaish-->
+    <h2><strong>Setup Requirements</strong></h2>
+    <p><strong>To participate in the experiment, you must:</strong></p>
+    <ol>
+        <li><strong>Use a laptop (no phone)</strong></li>
+        <li><strong>Sit at a desk</strong></li>
+        <li><strong>Be alone in a quiet room</strong></li>
+    </ol>
+
+    <div style="background-color: #ffebee; border-left: 4px solid #f44336; padding: 12px; margin: 15px 0;">
+        <p><strong>Important:</strong><br>
+            If you are unable to meet the setup requirements at the time of participation, we kindly ask you to close the page and withdraw from the experiment. Please note that compensation can only be provided if all required conditions are met and the study is completed as instructed
+    </div>
+</div>
+ <!-- Video Instructions update end here-->
+
+    <h2>Confirmation</h2>
+
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="confirmCheckbox">
+        <label class="form-check-label" for="confirmCheckbox">
+            I have read and understood all the information above and confirm that I meet all criteria regarding the setup requirements.
+        </label>
+
+        <p class="confirm-instruction">
+            Please click the check box to enable the Next button.
+        </p>
+    </div>
+
+    {% next_button %}
+
+    <script>
+        const confirmCheckbox = document.getElementById('confirmCheckbox');
+        const nextButton = document.querySelector('button.otree-btn-next');
+
+        // Make the 'Next' button initially disabled
+        document.addEventListener('DOMContentLoaded', () => {
+            nextButton.disabled = true;
+        });
+
+        confirmCheckbox.addEventListener('change', function() {
+            nextButton.disabled = !this.checked;
+        });
+    </script>
+
+{% endblock %}

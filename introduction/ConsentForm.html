@@ -1,0 +1,70 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Consent Form
+{% endblock %}
+
+{% block styles %}
+    <style>
+        .consent-instruction {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 5px;
+            font-style: italic;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="card bg-light-subtle text-dark mb-3">
+        <div class="card-body">
+            <p class="card-text">Dear participant,</p>
+
+            <p class="card-text">We kindly request your consent for the collection and processing of data gathered during this study.</p>
+        </div>
+        <div class="card-body">
+            <h3 class="card-title">Study Information</h3>
+
+            <p class="card-text">In this study, you will participate in an experimental market simulation. As a participant, you will take on the role of a firm and make pricing decisions for a virtual good. Your earnings will be influenced by the pricing choices you and other participants make in this market environment.</p>
+
+            <p class="card-text">The decisions you make will directly affect your potential earnings in this experiment. Please note that your participation is entirely voluntary, and you may withdraw from the study at any time without providing a reason. However, should you terminate the survey prematurely, you will not face any negative consequences, but please be aware that payment will only be made for fully completed surveys.</p>
+
+            <p class="card-text">You can earn money depending on your decisions. The processing time is approximately 45 minutes. For participating in the experiment, you will receive a fixed payment of {{ participation_fee }} and can earn additional money depending on your decisions and the decisions of another participant.</p>
+
+            <p class="card-text">This study is conducted as part of a research project by scientists from the University of Göttingen. If you have any questions about the study in general, please contact <b>Faeze Heydari (faeze.heydari@uni-goettingen.de).</b></p>
+        </div>
+
+        <div class="card-footer">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="consentCheckbox">
+                <label class="form-check-label" for="consentCheckbox">
+                    I have read and understood the information above and agree to participate in this study.
+               </label>
+
+               <p class="consent-instruction">Please click the check box to enable the Next button.</p>
+            </div>
+            <div>
+                {{ formfield 'prolific_id' }}
+            </div>
+        </div>
+    </div>
+
+    <br/>
+
+    {% next_button %}
+
+    <script>
+        const consentCheckbox = document.getElementById('consentCheckbox');
+        const nextButton = document.querySelector('button.otree-btn-next');
+
+        // Make the 'Next' button initially disabled
+        document.addEventListener('DOMContentLoaded', () => {
+            nextButton.disabled = true;
+        });
+
+        consentCheckbox.addEventListener('change', function() {
+            nextButton.disabled = !this.checked;
+        });
+    </script>
+{% endblock %}

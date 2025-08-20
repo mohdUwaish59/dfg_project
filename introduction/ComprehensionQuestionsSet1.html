@@ -1,0 +1,29 @@
+{% extends 'otree/Page.html' %}
+{% load otree static %}
+
+{% block title %}
+    Comprehension Questions
+{% endblock %}
+
+{% block content %}
+
+    <table>
+        <tr>
+            <td style="vertical-align: top">Suppose:</td>
+            <td style="padding-left: 1em">
+                Firm&nbsp;A chooses a price of 85&nbsp;ECU<br>
+                Firm&nbsp;B chooses a price of 75&nbsp;ECU<br>
+                Firm&nbsp;C chooses a price of 78&nbsp;ECU
+            </td>
+        </tr>
+    </table>
+
+    <br/>
+
+    {{ formfields }}
+
+    <br/>
+
+    {{ next_button }}
+
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'otree/Page.html' %}
+{% load otree static %}
+
+{% block title %}
+    Communication Stage
+{% endblock %}
+
+{% block content %}
+
+    <ul>
+        <li>In each period, before you make your pricing decisions you can communicate with the other two firms. <strong>Therefore, we provide you with a chat box.</strong></li>
+        <li>You are allowed to post as many messages as you like. There are only two restrictions:
+            <ol type="1">
+                <li>You may not post messages that identify yourself (e.g. age, gender, race, etc.)
+                <li>You may not use offensive language.</li>
+            </ol>
+        <li>The chat is open for 1 minute. After that time, the chat will close and you automatically move to the screen where you can set your price.</li>
+    </ul>
+
+    {% next_button %}
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'otree/Page.html' %}
+{% load otree static %}
+
+{% block title %}
+   Final summary of the Payoffs
+{% endblock %}
+
+{% block content %}
+
+<table>
+    <tr>
+        <td>Your total earnings:</td>
+        <td style="padding-left: 1em">{{ participant.payoff }}</td>
+    </tr>
+    <tr>
+        <td>Your earnings in pounds:</td>
+        <td style="padding-left: 1em">{{ payoff_in_real_world_currency }}</td>
+    </tr>
+    <tr>
+        <td>Total earnings including show-up fee:</td>
+        <td style="padding-left: 1em">{{ participant.payoff_plus_participation_fee }}</td>
+    </tr>
+</table>
+
+<br/><br/>
+
+{{ next_button }}
+
+{% endblock %}
