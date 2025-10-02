@@ -121,8 +121,8 @@ SESSION_CONFIG_DEFAULTS = dict(
     participation_fee=3.50, # PARTICIPATION FEE updated by Mohd Uwaish on 14.08.2025
     gender_grouping=None,
     wait_page_timeout=10*60,
-    female_qualtrics_link='https://wiwigoettingen.eu.qualtrics.com/jfe/form/SV_2tUCLjdfI4nGrJ4',
-    male_qualtrics_link='https://wiwigoettingen.eu.qualtrics.com/jfe/form/SV_3HMQ5bldvibtgea',
+    female_qualtrics_link='https://dfg-project-proxy-server.vercel.app/api/redirect/male',
+    male_qualtrics_link='https://dfg-project-proxy-server.vercel.app/api/redirect/female',
     doc=""
 )
 
